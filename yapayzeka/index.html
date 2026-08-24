@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otonom Dil Öğrenim Ajanı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="brand">🤖 Dil Koçu Ajanı</div>
+        <div class="gamification">
+            <span id="current-date" style="color: #aaa; margin-right: 15px;"></span>
+            
+            <span class="streak" title="Giriş Serisi">🔥 <span id="streak-count">5</span> Gün</span>
+            <span class="level">⭐ Seviye 3</span>
+            <div class="xp-container">
+                <div class="xp-bar" style="width: 65%;"></div>
+            </div>
+            <span class="xp-text">650 / 1000 XP</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="panel reading-section">
+            <div class="header">
+                <h2>📰 Günün Metni</h2>
+            </div>
+            <div class="content">
+                <p class="article-text" id="article-text">
+                    Artificial intelligence is revolutionizing the way we learn languages. It provides resilience in adapting to individual pacing and creates a highly immersive experience.
+                </p>
+                <div class="tools">
+                    <button id="fetch-text-btn" class="tool-btn">🔄 Ajandan Yeni Metin İste</button>
+                    <button id="extract-words-btn" class="tool-btn">🔍 Zor Kelimeleri Çıkar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel chat-section">
+            <div class="agent-terminal" id="agent-terminal">
+                > Sistem beklemede. Kullanıcı girişi bekleniyor...
+            </div>
+            <div class="chat-box" id="chat-box"></div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Cevabını buraya yaz...">
+                <button id="send-btn">Gönder</button>
+            </div>
+        </div>
+
+        <div class="panel stats-section">
+            <div class="header"><h2>📊 Analiz & Bellek</h2></div>
+            <div class="analytics">
+<div class="stat-card">
+    <span>Gramer Doğruluğu</span>
+    <span id="grammar-score">%85</span>
+</div>
+
+<div class="stat-card">
+    <span>Öğrenilen Kelime</span>
+    <span id="daily-words">0</span> 
+    <span>/ Günlük</span>
+</div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="card-front">
+                        <h3 id="word-front">Immersive</h3>
+                        <p class="hint" id="word-hint">İpucu: Kapsayıcı</p>
+                    </div>
+                    <div class="card-back">
+                        <h3 id="word-back">Sürükleyici</h3>
+                        <p class="example" id="word-ex">"VR provides an immersive experience."</p>
+                    </div>
+                </div>
+            </div>
+            <button id="next-word-btn" class="tool-btn">Sonraki Kart ➡</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

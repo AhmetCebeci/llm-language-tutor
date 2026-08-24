@@ -1,0 +1,13 @@
+Bilgisayara ve VS code a python yüklenir. 
+
+powershell e: pip install fastapi uvicorn groq pydantic kodu eklenir.
+VS code içinden intrepreter olarak python seçilir.
+VS code içinde yeni terminal açılır ve bu kodlar yapıştırılır 
+py -m pip install groq
+python database.py
+python update_db.py
+python fill_words_final.py
+python main.py
+
+index.html ye sağ tıklanıp live server olarak çalıştırılır.
+Kişisel verileri koruma sebebiyle API paylaşamıyoruz. GROQ üzerinden API alın.

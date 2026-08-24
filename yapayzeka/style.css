@@ -1,0 +1,107 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: #121212; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; }
+
+/* Üst Bar (Oyunlaştırma) */
+.top-bar { height: 60px; background-color: #0b3d1c; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; border-bottom: 2px solid #2c2c2c; }
+.brand { font-size: 1.2em; font-weight: bold; color: white; }
+.gamification { display: flex; align-items: center; gap: 15px; font-weight: bold; font-size: 0.9em; }
+.streak { color: #f97316; }
+.level { color: #eab308; }
+.xp-container { width: 150px; height: 10px; background-color: #2a2a2a; border-radius: 5px; overflow: hidden; }
+.xp-bar { height: 100%; background-color: #22c55e; transition: width 0.5s; }
+
+/* Ana Düzen (3 Kolonlu Grid) */
+.container { display: flex; flex: 1; gap: 15px; padding: 20px; overflow: hidden; }
+.panel { background-color: #1e1e1e; border-radius: 12px; border: 1px solid #2c2c2c; display: flex; flex-direction: column; overflow: hidden; }
+.header { padding: 15px; background-color: #181818; border-bottom: 1px solid #2c2c2c; text-align: center; }
+
+/* Sol Panel: Okuma */
+.reading-section { flex: 1; }
+.content { padding: 20px; display: flex; flex-direction: column; gap: 20px; flex: 1; overflow-y: auto; }
+.article-text { line-height: 1.6; font-size: 1.05em; color: #cccccc; }
+.highlight { background-color: rgba(34, 197, 94, 0.2); color: #4ade80; padding: 2px 5px; border-radius: 4px; cursor: pointer; }
+.tools { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.tool-btn { padding: 10px; background-color: #2a2a2a; color: white; border: 1px solid #333; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.tool-btn:hover { background-color: #333; }
+.highlight {
+    color: #4ade80; /* Tatanga yeşili / Neon yeşil */
+    font-weight: bold;
+    background-color: rgba(74, 222, 128, 0.1);
+    padding: 0 4px;
+    border-radius: 4px;
+    border-bottom: 1px dashed #4ade80;
+}
+/* Orta Panel: Sohbet ve Terminal */
+.chat-section { flex: 2; border: 1px solid #22c55e; box-shadow: 0 0 15px rgba(34,197,94,0.1); }
+.agent-terminal { background-color: #000000; color: #4ade80; font-family: 'Courier New', Courier, monospace; font-size: 0.85em; padding: 10px 15px; border-bottom: 1px solid #22c55e; min-height: 40px; }
+.chat-box { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+.message { padding: 12px 18px; border-radius: 12px; max-width: 80%; line-height: 1.4; }
+.agent { background-color: #2a2a2a; align-self: flex-start; border-bottom-left-radius: 2px; }
+.user { background-color: #166534; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+.input-area { padding: 15px; display: flex; gap: 10px; background-color: #181818; border-top: 1px solid #2c2c2c; }
+input { flex: 1; padding: 12px; border-radius: 6px; border: 1px solid #333; background-color: #2a2a2a; color: white; outline: none; }
+#send-btn { padding: 12px 25px; background-color: #22c55e; color: black; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
+#send-btn:hover { background-color: #16a34a; }
+
+/* Sağ Panel: İstatistik ve Flashcard */
+.stats-section { flex: 1; display: flex; flex-direction: column; }
+.analytics { padding: 20px; display: flex; flex-direction: column; gap: 15px; border-bottom: 1px solid #2c2c2c; }
+.stat-item span { font-size: 0.85em; color: #aaa; margin-bottom: 5px; display: block; }
+.progress { width: 100%; height: 6px; background-color: #2a2a2a; border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background-color: #3b82f6; }
+
+.flashcard-container { flex: 1; display: flex; justify-content: center; align-items: center; perspective: 1000px; padding: 20px; }
+.flashcard { width: 100%; max-width: 280px; height: 180px; position: relative; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+.flashcard.is-flipped { transform: rotateY(180deg); }
+.card-front, .card-back { width: 100%; height: 100%; position: absolute; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.card-front { background: linear-gradient(135deg, #166534, #0b3d1c); }
+.card-back { background: linear-gradient(135deg, #0b3d1c, #166534); transform: rotateY(180deg); }
+.hint, .example { margin-top: 10px; font-size: 0.85em; opacity: 0.8; }
+/* --- YENİ EKLENEN İSTATİSTİK KARTLARI --- */
+.stat-card {
+    background-color: #1a1a1a; /* Koyu arka plan */
+    border: 1px solid #333;
+    border-left: 4px solid #4ade80; /* Tatanga yeşili vurgu çizgisi */
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+/* Üzerine gelince hafif yukarı kalkma efekti */
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-left: 4px solid #22c55e;
+}
+
+/* Kartın içindeki ilk yazı (Örn: Gramer Doğruluğu) */
+.stat-card span:first-child {
+    font-size: 0.9em;
+    color: #a3a3a3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* Değerlerin yazıldığı kısımlar (Örn: %85 veya 12) */
+.stat-card span#grammar-score, 
+.stat-card span#daily-words {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #4ade80; /* Ana değerleri yeşil parlatıyoruz */
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+/* "/ Günlük" yazısı gibi ek metinler için */
+.stat-card span:last-child {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 4px;
+}
