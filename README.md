@@ -92,5 +92,3 @@ llm-language-tutor/
 
 ---
 
-## 👥 Geliştiriciler
-**Yapay Zeka Grup 13** tarafından bir ders projesi kapsamında geliştirilmiştir.
